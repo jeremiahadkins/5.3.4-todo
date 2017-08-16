@@ -1,0 +1,24 @@
+add a todo:
+<form action="/add" method="post">
+  <input type="text" name="todoTask" value="">
+  <input type="submit" value="Add Todo">
+</form>
+
+stuff to do:
+{{#each todos}}
+  {{#unless done}}
+    <form action="/complete" method="post">
+      <h5>{{task}}</h5>
+      <button type="submit" value="{{task}}" name="complete">Done</button>
+    </form>
+  {{/unless}}
+{{/each}}
+
+<hr>
+
+stuff that's done:
+{{#each todos}}
+  {{#if done}}
+  <h1>{{task}}</h1>
+  {{/if}}
+{{/each}}
