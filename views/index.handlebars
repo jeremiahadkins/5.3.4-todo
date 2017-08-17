@@ -22,7 +22,7 @@
     style="border-bottom: solid 1px #ccc;">Things you've done:</h6>
   {{#each todos}}
     {{#if done}}
-      <h6 class="small text-muted mb-3">✔  {{task}}</h6>
+      <h6 class="small text-muted mb-3" style="text-decoration: line-through;">{{task}}</h6>
     {{/if}}
   {{/each}}
 </div>
