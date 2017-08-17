@@ -22,15 +22,14 @@ app.get('/', (req, res) => {
 
 
 app.post('/add', (req, res) => {
-  // req.checkBody('todoTask', 'Must add task.').notEmpty();
-  // let errors = req.validationErrors();
-  // if (errors) {
-    // res.redirect('index', {errors: errors});
-    // res.redirect('/');
-  // } else {
+  req.checkBody('todoTask', 'Must add task.').notEmpty();
+  let errors = req.validationErrors();
+  if (errors) {
+    res.redirect('/');
+  } else {
     todos.push({task: req.body.todoTask, done: false});
     res.redirect('/');
-  // }
+  }
 })
 
 
