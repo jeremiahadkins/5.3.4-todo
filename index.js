@@ -4,11 +4,15 @@ const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const todoList = require('./todos')
 const todos = todoList.todos;
+const expressValidator = require('express-validator');
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
+app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
+
 // set middleware
+app.use(expressValidator());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 
@@ -18,10 +22,15 @@ app.get('/', (req, res) => {
 
 
 app.post('/add', (req, res) => {
-  // console.log('before', todos);
-  todos.push({task: req.body.todoTask, done: false});
-  // console.log('after', todos);
-  res.redirect('/');
+  // req.checkBody('todoTask', 'Must add task.').notEmpty();
+  // let errors = req.validationErrors();
+  // if (errors) {
+    // res.redirect('index', {errors: errors});
+    // res.redirect('/');
+  // } else {
+    todos.push({task: req.body.todoTask, done: false});
+    res.redirect('/');
+  // }
 })
 
 
@@ -39,6 +48,6 @@ app.post('/complete', (req, res) => {
 
 
 app.listen(3070, (req, res) => {
-  console.log('2du is 🏃  on port 3070');
+  console.log('✌️ do is 🏃  on port 3070');
 });
 

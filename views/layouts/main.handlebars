@@ -1,9 +1,29 @@
 <html>
 <head>
+<style>
+  button:hover { cursor: pointer; }
+</style>
   <meta charset="UTF-8">
-  <title>2do</title>
+  <title>✌️do</title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
-<body>
-  {{{body}}}
+<body class="bg-faded">
+  <div class="text-center p-5 container-fluid bg-inverse text-white">
+    <h1 class="mb-4">✌️do</h1>
+    <div class="container" style="max-width:600px;">
+      <h6 class="mb-3 small">What would you like to do?</h6>
+      <form action="/add" method="post">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="New Task..." name="todoTask">
+          <span class="input-group-btn">
+            <button class="btn btn-success" type="submit">Add</button>
+          </span>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="container my-5" style="max-width: 600px;">
+    {{{body}}}
+  </div>
 </body>
 </html>

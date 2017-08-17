@@ -1,24 +1,29 @@
-add a todo:
-<form action="/add" method="post">
-  <input type="text" name="todoTask" value="">
-  <input type="submit" value="Add Todo">
-</form>
-
-stuff to do:
-{{#each todos}}
-  {{#unless done}}
-    <form action="/complete" method="post">
-      <h5>{{task}}</h5>
-      <button type="submit" value="{{task}}" name="complete">Done</button>
-    </form>
-  {{/unless}}
+{{#each errors}}
+  <h1>{{msg}}</h1>
 {{/each}}
+<div class="card p-4 mb-5">
+  <h6 class="text-center pb-4 mb-4"
+    style="border-bottom: solid 1px #ccc;">Things to do:</h6>
+  {{#each todos}}
+    {{#unless done}}
+      <form action="/complete" method="post" class="mb-4">
+        <button class="btn btn-sm btn-outline-success mr-2"
+          type="submit" value="{{task}}" name="complete">
+          ✔
+        </button>
+        <h6 class="d-inline">{{task}}</h6>
+      </form>
+    {{/unless}}
+  {{/each}}
+</div>
 
-<hr>
+<div class="card p-4 bg-faded mb-5">
+  <h6 class="text-center pb-4 mb-4"
+    style="border-bottom: solid 1px #ccc;">Things you've done:</h6>
+  {{#each todos}}
+    {{#if done}}
+      <h6 class="small text-muted mb-3">✔  {{task}}</h6>
+    {{/if}}
+  {{/each}}
+</div>
 
-stuff that's done:
-{{#each todos}}
-  {{#if done}}
-  <h1>{{task}}</h1>
-  {{/if}}
-{{/each}}

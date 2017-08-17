@@ -1,11 +1,11 @@
 module.exports = {
   todos:[
     {
-      task: 'Get Rich Quick',
+      task: 'Learn JavaScript',
       done: false
     },
     {
-      task: 'Save the Planet',
+      task: 'Solve world hunger',
       done: false
     },
     {
@@ -13,7 +13,11 @@ module.exports = {
       done: true
     },
     {
-      task: 'Buy some wine',
+      task: 'Crack a beer',
+      done: false
+    },
+    {
+      task: 'Be chill',
       done: true
     }
   ]
